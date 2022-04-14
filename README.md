@@ -1,6 +1,6 @@
 # 作品清單
 ## p5.js
-- [Eyes Tracking 眼球追蹤👀)](https://qaz5823091.github.io/Collections/EyesTracking)
+- [Eyes Tracking 眼球追蹤👀](https://qaz5823091.github.io/Collections/EyesTracking)
 - [Greedy Snake 貪食蛇🐍](https://qaz5823091.github.io/Collections/GreedySnake)
 
 ## Native HTML / JS / CSS
