@@ -1,0 +1,39 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-family: monospace;
+    font-size: 200%;
+    user-select: none;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+.container {
+    text-align: center;
+}
+
+#message {
+    position: fixed;
+    left: 0;
+    right: 0;
+    margin: 10% auto;
+    font-size: 100px;
+    pointer-events: none;
+}
+
+.part {
+    float: left;
+    width: 25%;
+    height: 1000px;
+    background-color: blue;
+    text-align: center;
+}
