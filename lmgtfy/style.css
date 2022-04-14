@@ -1,0 +1,26 @@
+.container {
+  padding: 15% 0;
+  text-align: center;
+}
+
+.paragraph {
+  font-size: 80px;
+  font-family: Sans-serif;
+  display: inline;
+}
+
+.blue {
+  color: #4285F4;
+}
+
+.green {
+  color: #34A853;
+}
+
+.yellow {
+  color: #FBBC05;
+}
+
+.red {
+  color: #EA4335;
+}

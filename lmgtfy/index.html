@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Let me Google that for you</title>
+    <script type="text/javascript" src="load_page.js"></script>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="title">
+        <p class="paragraph">
+          <span class="blue">S</span><!--
+          --><span class="red">e</span><!--
+          --><span class="yellow">a</span><!--
+          --><span class="blue">r</span><!--
+          --><span class="green">c</span><!--
+          --><span class="red">h</span>
+        </p>
+      </div>
+      <div class="form">
+        <input type="text" id="search" placeholder="Search what?">
+        <button type="submit" id="submit" onclick="loadPage();">Search</button>
+      </div>
+    </div>
+    <!--
+    <script type="text/javascript">
+      document.getElementById('search')
+        .addEventListener("keyup", function(event) {
+        // Number 13 is the "Enter" key on the keyboard
+          if (event.keyCode === 13) {
+            // Cancel the default action, if needed
+            event.preventDefault();
+            // Trigger the button element with a click
+            document.getElementById('submit').click();
+          }
+        });
+    </script>
+    -->
+  </body>
+</html>
