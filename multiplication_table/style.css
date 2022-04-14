@@ -1,0 +1,54 @@
+body {
+  font-family: sans-serif;
+  font-size: 50px;
+  color: green;
+  text-align: center;
+}
+
+.calculate {
+  display: inline-block;
+  position: fixed;
+  top: 10%;
+  left: 10%;
+}
+
+.message {
+  color: black;
+  padding-left: 25px;
+  padding-bottom: 50px;
+}
+
+.questionGrid {
+  display: grid;
+  grid-template-columns: 60px 60px 60px 60px 50px 50px;
+  grid-template-rows: 50px;
+  margin: 0 auto;
+}
+
+.answerGrid {
+  display: grid;
+  grid-template-columns: 50px 50px 50px 50px;
+  grid-template-rows: 50px 50px 50px;
+  padding-left: 20%;
+}
+
+.answerGrid .zero {
+  padding: 50px 0;
+  grid-row-start: span 3;
+  height: 50px;
+}
+
+.square {
+  border-style: outset;
+  border-radius: 2.5px;
+  width: 50px;
+  height: 50px;
+}
+
+.number:hover {
+  color: #fff696;
+}
+
+.symbol {
+  border-style: none;
+}

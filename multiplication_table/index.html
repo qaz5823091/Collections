@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>九九乘法表！</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="function.js"></script>
+  </head>
+  <body>
+    <div class="calculate">
+      <div class="message">loading ...</div>
+      <div class="questionGrid">
+        <div id="number1" class="square">?</div>
+        <div class="square symbol">×</div>
+        <div id="number2" class="square">?</div>
+        <div class="square symbol">=</div>
+        <div id="number3" class="square">?</div>
+        <div id="number4" class="square">?</div>
+      </div>
+      <br>
+      <div class="answerGrid">
+        <div id="number" class="square zero number" onclick="javascript: count(0);">0</div>
+        <div id="number" class="square number" onclick="javascript: count(1);">1</div>
+        <div id="number" class="square number" onclick="javascript: count(2);">2</div>
+        <div id="number" class="square number" onclick="javascript: count(3);">3</div>
+        <div id="number" class="square number" onclick="javascript: count(4);">4</div>
+        <div id="number" class="square number" onclick="javascript: count(5);">5</div>
+        <div id="number" class="square number" onclick="javascript: count(6);">6</div>
+        <div id="number" class="square number" onclick="javascript: count(7);">7</div>
+        <div id="number" class="square number" onclick="javascript: count(8);">8</div>
+        <div id="number" class="square number" onclick="javascript: count(9);">9</div>
+      </div>
+    </div>
+  </body>
+</html>
