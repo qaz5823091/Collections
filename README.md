@@ -1,4 +1,7 @@
 # 作品清單
+## pixi.js
+- [Oreo Maker 奧里奧製作機🍪](https://qaz5823091.github.io/Collections/OreoMaker)
+
 ## p5.js
 - [Eyes Tracking 眼球追蹤👀](https://qaz5823091.github.io/Collections/EyesTracking)
 - [Greedy Snake 貪食蛇🐍](https://qaz5823091.github.io/Collections/GreedySnake)

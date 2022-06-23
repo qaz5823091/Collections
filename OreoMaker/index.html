@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Oreo Maker 奧里奧製造機</title>
+        <script src="https://pixijs.download/v6.4.2/pixi.min.js"></script>
+        <style>* {padding: 0; margin: 0}</style>
+    </head>
+    <body>
+        <script type="text/javascript">
+            const app = new PIXI.Application({ backgroundColor: 0x1099bb });
+            document.body.appendChild(app.view)
+            app.renderer.view.style.position = "absolute";
+            app.renderer.view.style.display = "block";
+            app.renderer.view.autoResize = true;
+            app.renderer.resize(window.innerWidth, window.innerHeight);
+
+            stack = []
+            const cookies = new PIXI.Container();
+            const message = new PIXI.Container();
+
+            const texture_oreo_o = PIXI.Texture.from('images/button-oreo-o.png');
+            const texture_oreo_re = PIXI.Texture.from('images/button-oreo-re.png');
+            const texture_trash = PIXI.Texture.from('images/button-trash.png');
+            const texture_flat_o = PIXI.Texture.from('images/stack-oreo-o.png');
+            const texture_flat_re = PIXI.Texture.from('images/stack-oreo-re.png');
+
+            function makeCookie(event) {
+                if (this.userData == 2) {
+                    if (stack.length == 0) {
+                        alert('已經吃完了！');
+
+                        return ;
+                    }
+
+                    stack.pop();
+                    cookies.removeChildren();
+                    message.removeChildren();
+                }
+                else {
+                    if (stack.length >= 15) {
+                        alert('貪心鬼別搗蛋！');
+
+                        return ;
+                    }
+
+                    stack.push(this.userData);
+                }
+            }
+
+            function setButton(object) {
+                object.interactive = true;
+                object.buttonMode = true;
+            }
+
+            function createButton() {
+                const button_o = new PIXI.Sprite(texture_oreo_o);
+                const button_re = new PIXI.Sprite(texture_oreo_re);
+                const button_trash = new PIXI.Sprite(texture_trash);
+
+                button_o.userData = 0;
+                button_re.userData = 1;
+                button_trash.userData = 2;
+
+                button_o.scale.set(0.5);
+                button_re.scale.set(0.5);
+                button_trash.scale.set(0.5);
+
+                button_o.x = app.screen.width / 10;
+                button_re.x = app.screen.width / 10;
+                button_trash.x = app.screen.width / 10;
+                button_o.y = app.screen.height * 0.1;
+                button_re.y = app.screen.height * 0.4;
+                button_trash.y = app.screen.height * 0.75;
+
+                setButton(button_o);
+                setButton(button_re);
+                setButton(button_trash);
+
+                button_o.on('pointerdown', makeCookie);
+                button_re.on('pointerdown', makeCookie);
+                button_trash.on('pointerdown', makeCookie);
+
+                app.stage.addChild(
+                    button_o,
+                    button_re,
+                    button_trash,
+                    cookies,
+                    message
+                );
+            }
+
+            function createCookie(data, x, y) {
+                const cookie = new PIXI.Sprite();
+
+                cookie.x = x;
+                cookie.y = y;
+
+                if (data == 1) {
+                    cookie.texture = texture_flat_re;
+                    cookie.x += 25;
+                    cookie.y -= 10;
+                }
+                else {
+                    cookie.texture = texture_flat_o;
+                }
+
+                cookie.scale.set(0.5);
+
+                cookies.addChild(cookie);
+            }
+
+            function createText(data, x, y) {
+                const text = new PIXI.Text(data);
+                text.x = x;
+                text.y = y;
+
+                message.addChild(text);
+            }
+
+            createButton();
+
+            app.ticker.add((delta) => {
+                let x = app.screen.width;
+                let y = app.screen.height;
+                let text = '';
+                for (var i = 0; i < stack.length; i++) {
+                    createCookie(stack[i], x * 0.3, y * 0.9 - i * 40);
+                    text += (stack[i]) ? 're' : 'o';
+                }
+                createText(text, x * 0.5, y * 0.5);
+            });
+
+          </script>
+    </body>
+</html>
