@@ -1,0 +1,13 @@
+textarea {
+    resize: none;
+}
+
+.container {
+    margin: 0 auto;
+    width: 80%;
+}
+
+.input, .custom, .result {
+    margin: 0 auto;
+    display: block;
+}

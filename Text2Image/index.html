@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>文字轉圖片 | Text 2 Image</title>
+        <link rel="stylesheet" href="./style.css">
+    </head>
+    <body>
+        <div class="container">
+            <div class="input">
+                <textarea id="user-input" name="name" rows="3" cols="60" maxlength="50">測試文字</textarea>
+            </div>
+            <div class="custom">
+                <select id="select-font" class="" name="select-font">
+                </select>
+                <input type="color" id="input-color" name="input-color" value="#000000">
+                <select id="select-size" class="" name="select-size">
+                    <option value="18">18</option>
+                </select>
+                <button id="button-apply" type="button" name="button-apply">預覽</button>
+                <button id="button-copy" type="button" name="button-copy">複製</button>
+                <button id="button-download" type="button" name="button-download">下載</button>
+            </div>
+            <hr>
+            <div class="result">
+                <img id="image-output" src="" alt="測試圖片">
+            </div>
+        </div>
+        <script type="text/javascript" src="./main.js"></script>
+    </body>
+</html>
