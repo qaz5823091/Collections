@@ -9,6 +9,8 @@ var selectedFont;
 var selectedSize;
 var selectedColor;
 
+var fontSizeType = "em";
+
 var targetCanvas = null;
 
 var userInput = document.getElementById("user-input");
@@ -53,17 +55,19 @@ async function setFont(title, name, type) {
 }
 
 function setStyle() {
+    var userInputRows = userInput.value.split(/\r?\n/);
+    var maxItem = userInputRows.reduce(
+        (acc, word) => (word.length > acc.length ? word : acc),
+        ""
+    );
     selectedFont = selectFont.value;
-    selectedSize = selectSize.value + "px";
+    selectedSize = selectSize.value + fontSizeType;
     selectedColor = selectColor.value;
 
     var title = document.querySelector('select[name="select-font"] option:checked').parentElement.label;
     var name = selectedFont;
     var type = document.querySelector('select[name="select-font"] option:checked').parentElement.getAttribute('type');
     setFont(title, name, type);
-
-    userInput.style['font-size'] = selectedSize;
-    userInput.style['color'] = selectedColor;
 
     var ratio = window.devicePixelRatio;
     var canvas = document.createElement("canvas");
@@ -73,15 +77,15 @@ function setStyle() {
     var context = canvas.getContext("2d");
     context.font = String(selectedSize) + " " + String(selectedFont);
 
-    var metrics = context.measureText(userInput.value);
+    var metrics = context.measureText(maxItem);
     var fontHeight = metrics.fontBoundingBoxAscent + metrics.fontBoundingBoxDescent;
     var actualHeight = parseInt(context.font, 10);
     var actualWidth = metrics.width;
 
     canvas.width = actualWidth * ratio;
-    canvas.height = actualHeight * ratio;
-    canvas.style.width = actualWidth + "px";
-    canvas.style.height = actualHeight + "px";
+    canvas.height = actualHeight * ratio / 2 * (userInputRows.length * 2.5);
+    canvas.style.width = actualWidth + fontSizeType;
+    canvas.style.height = actualHeight + fontSizeType;
     canvas.getContext("2d").scale(ratio, ratio);
 
     context = canvas.getContext("2d");
@@ -89,7 +93,10 @@ function setStyle() {
     context.font = String(selectedSize) + " " + String(selectedFont);
     context.textAlign = "left";
     context.fillStyle = selectedColor;
-    context.fillText(userInput.value, 0, actualHeight - ratio - 1.5);
+    userInputRows.forEach((value, index) => {
+        console.log(actualHeight * (index + 1));
+        context.fillText(userInputRows[index], 0, actualHeight * (index + 1));
+    });
 
     targetCanvas = canvas;
 
@@ -105,6 +112,7 @@ window.onload = function() {
 
     fetchData().then(async function(data) {
         await setList(data);
+        setStyle();
 
         elements = [
             userInput,
