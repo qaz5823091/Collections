@@ -1,0 +1,43 @@
+{
+	"Chiayi-City": {
+		"type": "ttf",
+		"items": [
+			"ChiayiCity"
+		]
+	},
+	"Noto-Sans-TC": {
+		"type": "otf",
+		"items": [
+			"NotoSansTC-Black",
+			"NotoSansTC-Light",
+			"NotoSansTC-Regular",
+			"NotoSansTC-Bold",
+			"NotoSansTC-Medium", 
+			"NotoSansTC-Thin"
+		]
+	},
+	"Noto-Serif-TC": {
+		"type": "otf",
+		"items": [
+			"NotoSerifTC-Black",
+			"NotoSerifTC-ExtraLight",
+			"NotoSerifTC-Medium",
+			"NotoSerifTC-SemiBold",
+			"NotoSerifTC-Bold",
+			"NotoSerifTC-Light",
+			"NotoSerifTC-Regular"
+		]
+	},
+	"Genyo-Font": {
+		"type": "ttc",
+		"items": [
+			"GenYoMin-B",
+			"GenYoMin-H",
+			"GenYoMin-M",
+			"GenYoMin-SB",
+			"GenYoMin-EL",
+			"GenYoMin-L",
+			"GenYoMin-R"
+		]
+	}
+}

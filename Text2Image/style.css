@@ -1,0 +1,57 @@
+html {
+    height: 100%;
+    background: linear-gradient(
+        180deg, 
+        #fcd25d 50%, 
+        #2d755b 50%
+    );
+}
+
+@media only screen and (max-width: 1000px) {
+    .container {
+        padding-top: 60%;
+    }
+}
+
+@media only screen and (min-width: 1001px) {
+    .container {
+        padding-top: 13em;
+    }
+}
+
+.container {
+    margin: 0 auto;
+    width: 50%;
+}
+
+h2 {
+    text-align: center;
+}
+
+textarea {
+    width: 100%;
+    height: 100px;
+    resize: none;
+}
+
+.custom {
+    margin-top: 100px;
+}
+
+#select-font, #input-color, #select-size, #button-apply, #button-copy, #button-download {
+    display: inline-block;
+}
+
+.custom {
+    margin: 0 auto;
+    display: block;
+}
+
+.custom-font, .custom-style, .custom-button {
+    display: inline-block;
+}
+
+.result {
+    text-align: center;
+    background: gray;
+}
