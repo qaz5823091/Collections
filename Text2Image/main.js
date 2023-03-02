@@ -51,7 +51,7 @@ async function setFont(title, name, type) {
     const font = new FontFace(name, `url('./fonts/${title}/${name}.${type}')`);
     await font.load();
     document.fonts.add(font);
-    userInput.style['font-family'] = name;
+    //userInput.style['font-family'] = name;
 }
 
 function setStyle() {
