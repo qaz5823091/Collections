@@ -55,3 +55,18 @@ textarea {
     text-align: center;
     background: gray;
 }
+
+button {
+    border-radius: 20px;
+    height: 30px;
+    width: 50px;
+    background: white;
+    border: 1px white solid;
+    margin: 5px;
+}
+
+button:active {
+    background-color: #0377fc;
+    border: 1px #0377fc solid;
+    color: white;
+}
