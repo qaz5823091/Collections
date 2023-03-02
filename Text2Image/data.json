@@ -5,6 +5,25 @@
 			"ChiayiCity"
 		]
 	},
+	"Genyo-Font": {
+		"type": "ttc",
+		"items": [
+			"GenYoMin-B",
+			"GenYoMin-H",
+			"GenYoMin-M",
+			"GenYoMin-SB",
+			"GenYoMin-EL",
+			"GenYoMin-L",
+			"GenYoMin-R"
+		]
+	},
+	"ChenYuluoyan": {
+		"type": "ttf",
+		"items": [
+			"ChenYuluoyan-Thin",
+			"ChenYuluoyan-Thin-Monospaced"
+		]
+	},
 	"Noto-Sans-TC": {
 		"type": "otf",
 		"items": [
@@ -28,16 +47,4 @@
 			"NotoSerifTC-Regular"
 		]
 	},
-	"Genyo-Font": {
-		"type": "ttc",
-		"items": [
-			"GenYoMin-B",
-			"GenYoMin-H",
-			"GenYoMin-M",
-			"GenYoMin-SB",
-			"GenYoMin-EL",
-			"GenYoMin-L",
-			"GenYoMin-R"
-		]
-	}
 }
