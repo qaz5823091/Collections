@@ -1,0 +1,119 @@
+/**
+ * red: #EA5229
+ * yellow: #FFEEB2
+ * gray: #636C68
+ * black: #131313
+ */
+
+html {
+	left: 0;
+	margin: 0;
+	width: inherit;;
+	user-select: none;
+}
+
+html::-webkit-scrollbar {
+	display: none;
+}
+
+body {
+	width: inherit;
+	background: #131313;
+}
+
+
+@font-face {
+    font-family: bananaslipplus;
+    src: url("bananaslipplus.otf") format("opentype");
+}
+
+#container {
+	width: 100%;
+	display: flex;
+	margin-top: 50px;
+	flex-direction: column;
+	align-items: flex-start;
+}
+
+#upper-frame, #lower-frame {
+	align-self: center;
+}
+
+#upper-frame {
+	width: 300px;
+	height: 120px;
+}
+
+#lower-frame {
+	width: 300px;
+	height: 380px;
+}
+
+#upper-item, #lower-item {
+	background-image: url('background.png');
+}
+
+#upper-item {
+	width: 284px;
+	height: 104px;
+	text-align: center;
+	letter-spacing: 40px;
+	text-indent: 40px;
+}
+
+#lower-item {
+	width: 284px;
+	height: 364px;
+	font-style: italic;
+	justify-content: space-between;
+}
+
+.outer-border {
+	border: 10px solid #636C68;
+	border-radius: 50px;
+	background: #FFEEB2;
+}
+
+.inner-border {
+	display: flex;
+	flex-flow: column nowrap;
+	align-items: center;
+	justify-content: center;
+
+	margin: 8px 8px;
+	width: inherit;
+	height: inherit;
+	background: #EA5229;
+	color: #FFEEB2;
+	font-size: 40px;
+	font-weight: bold;
+	border-radius: 35px;
+}
+
+#first-line {
+	font-size: 90px;
+	align-self: center;
+	position: relative;
+}
+
+#second-line {
+	font-weight: normal;
+	letter-spacing: 10px;
+	text-indent: 10px;
+	margin-bottom: 50px;
+	font-family: bananaslipplus;
+	font-size: 50px;
+}
+
+#word {
+	position: absolute;
+	left: 110px;
+	top: 75px;
+}
+
+#star {
+	width: 250px;
+	height: 250px;
+	background: #FFEEB2;
+	clip-path: polygon(68% 5%, 51% 44%, 50% 15%, 49% 44%, 37% 17%, 47% 45%, 25% 25%, 45% 47%, 18% 37%, 44% 49%, 15% 50%, 44% 51%, 18% 63%, 45% 53%, 26% 74%, 46% 55%, 31% 95%, 48% 54%, 47% 52%, 47% 51%, 46% 50%, 47% 48%, 47% 47%, 48% 47%, 50% 46%, 52% 46%);
+}
