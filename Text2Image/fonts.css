@@ -1,0 +1,138 @@
+@font-face {
+    font-family: "NotoSansTC-Bold";
+    src: url("./fonts/Noto-Sans-TC/NotoSansTC-Bold.otf") format("opentype");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "NotoSansTC-Regular";
+    src: url("./fonts/Noto-Sans-TC/NotoSansTC-Regular.otf") format("opentype");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "NotoSansTC-Black";
+    src: url("./fonts/Noto-Sans-TC/NotoSansTC-Black.otf") format("opentype");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "NotoSansTC-Thin";
+    src: url("./fonts/Noto-Sans-TC/NotoSansTC-Thin.otf") format("opentype");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "NotoSansTC-Medium";
+    src: url("./fonts/Noto-Sans-TC/NotoSansTC-Medium.otf") format("opentype");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "NotoSansTC-Light";
+    src: url("./fonts/Noto-Sans-TC/NotoSansTC-Light.otf") format("opentype");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "GenYoMin-EL";
+    src: url("./fonts/Genyo-Font/GenYoMin-EL.ttc") format("truetype");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "GenYoMin-SB";
+    src: url("./fonts/Genyo-Font/GenYoMin-SB.ttc") format("truetype");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "GenYoMin-M";
+    src: url("./fonts/Genyo-Font/GenYoMin-M.ttc") format("truetype");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "GenYoMin-L";
+    src: url("./fonts/Genyo-Font/GenYoMin-L.ttc") format("truetype");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "GenYoMin-B";
+    src: url("./fonts/Genyo-Font/GenYoMin-B.ttc") format("truetype");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "GenYoMin-R";
+    src: url("./fonts/Genyo-Font/GenYoMin-R.ttc") format("truetype");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "GenYoMin-H";
+    src: url("./fonts/Genyo-Font/GenYoMin-H.ttc") format("truetype");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "ChiayiCity";
+    src: url("./fonts/Chiayi-City/ChiayiCity.ttf") format("truetype");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "ChenYuluoyan-Thin-Monospaced";
+    src: url("./fonts/ChenYuluoyan/ChenYuluoyan-Thin-Monospaced.ttf") format("truetype");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "ChenYuluoyan-Thin";
+    src: url("./fonts/ChenYuluoyan/ChenYuluoyan-Thin.ttf") format("truetype");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "NotoSerifTC-ExtraLight";
+    src: url("./fonts/Noto-Serif-TC/NotoSerifTC-ExtraLight.otf") format("opentype");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "NotoSerifTC-Black";
+    src: url("./fonts/Noto-Serif-TC/NotoSerifTC-Black.otf") format("opentype");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "NotoSerifTC-Bold";
+    src: url("./fonts/Noto-Serif-TC/NotoSerifTC-Bold.otf") format("opentype");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "NotoSerifTC-SemiBold";
+    src: url("./fonts/Noto-Serif-TC/NotoSerifTC-SemiBold.otf") format("opentype");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "NotoSerifTC-Medium";
+    src: url("./fonts/Noto-Serif-TC/NotoSerifTC-Medium.otf") format("opentype");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "NotoSerifTC-Regular";
+    src: url("./fonts/Noto-Serif-TC/NotoSerifTC-Regular.otf") format("opentype");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "NotoSerifTC-Light";
+    src: url("./fonts/Noto-Serif-TC/NotoSerifTC-Light.otf") format("opentype");
+    font-display: swap;
+}
+

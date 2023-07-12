@@ -28,7 +28,6 @@ async function fetchData() {
         .catch((error) => console.log(error));
 }
 
-
 function setList(data) {
     Object.keys(data).forEach(function(title) {
         var font_title = title;
@@ -47,13 +46,6 @@ function setList(data) {
     });
 }
 
-async function setFont(title, name, type) {
-    const font = new FontFace(name, `url('./fonts/${title}/${name}.${type}')`);
-    await font.load();
-    document.fonts.add(font);
-    //userInput.style['font-family'] = name;
-}
-
 function setStyle() {
     var userInputRows = userInput.value.split(/\r?\n/);
     var maxItem = userInputRows.reduce(
@@ -67,7 +59,7 @@ function setStyle() {
     var title = document.querySelector('select[name="select-font"] option:checked').parentElement.label;
     var name = selectedFont;
     var type = document.querySelector('select[name="select-font"] option:checked').parentElement.getAttribute('type');
-    setFont(title, name, type);
+    //setFont(title, name, type);
 
     var ratio = window.devicePixelRatio;
     var canvas = document.createElement("canvas");
@@ -94,7 +86,6 @@ function setStyle() {
     context.textAlign = "left";
     context.fillStyle = selectedColor;
     userInputRows.forEach((value, index) => {
-        console.log(actualHeight * (index + 1));
         context.fillText(userInputRows[index], 0, actualHeight * (index + 1));
     });
 
