@@ -1,0 +1,55 @@
+body {
+  width: 100%;
+  height: auto;
+  padding-bottom: 5%;
+  background: black;
+  user-select: none;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+.text p::before {
+  content: "\00a0\00a0\00a0\00a0\00a0\00a0";
+}
+
+.text p {
+  padding-left: 2%;
+}
+
+.selfie {
+  width: auto;
+  height: auto;
+  padding: 5%;
+  padding-top: 10%;
+}
+
+.selfieImage {
+  display: block;
+  margin: 0 auto;
+  width: 320px;
+  height: auto;
+  border-radius: 50%;
+}
+
+.href {
+  width: auto;
+  height: auto;
+  text-align: center;
+  padding: 0.5%;
+}
+
+.icon {
+  text-decoration: none;
+  display: inline-block;
+}
+
+.text {
+  width: 50%;
+  display: block;
+  margin: 0 auto;
+  font-size: 30px;
+  font-family: sans-serif;
+  padding-top: 1%;
+}
