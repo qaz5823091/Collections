@@ -1,0 +1,73 @@
+body {
+    padding: 0;
+    margin: 0;
+	user-select: none;
+}
+
+html, body, #map {
+    height: 100%;
+    width: 100vw;
+}
+
+img {
+	width: 90px;
+	height: 160px;
+	pointer-events: none;
+	border-radius: 12px;
+	float: right;
+	display: block;
+}
+
+.leaflet-popup-content-wrapper {
+}
+
+.leaflet-popup-content {
+	margin: 0 auto;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.intro {
+	margin: 0 10px;
+	font-size: 16px;
+}
+
+/* 
+ * freshman #3581D8 blue
+ * sophomore #28CC2D green
+ * junior #FFE135 yellow
+ * senior #D82E3F red
+ */
+.freshman .leaflet-popup-content-wrapper {
+	background: #3581D8;
+	color: white;
+}
+
+.freshman  .leaflet-popup-tip {
+	background: #3581D8;
+}
+
+.sophomore .leaflet-popup-content-wrapper {
+	background: #28CC2D;
+}
+
+.sophomore .leaflet-popup-tip {
+	background: #28CC2D;
+}
+
+.junior .leaflet-popup-content-wrapper {
+	background: #FFE135;
+}
+
+.junior  .leaflet-popup-tip {
+	background: #FFE135;
+}
+
+.senior .leaflet-popup-content-wrapper {
+	background: #D82E3F;
+}
+
+.senior .leaflet-popup-tip {
+	background: #D82E3F;
+}
