@@ -3,26 +3,26 @@
 		"position": [23.464206, 120.430396],
 	    "imageName": "Screenshot_20231210_175606_Instagram.jpg",
 	    "intro": "冠王保齡球館是嘉義唯一一間保齡球館。",
-	    "tag": "freshman"
+	    "grade": 1
 	},
 	{
 		"position": [23.476891, 120.448836],
 	    "imageName": "Screenshot_20231210_175344_Gallery.jpg",
-	    "tag": "sophomore"
+	    "grade": 2
 	},
 	{
 		"position": [23.499428, 120.452333],
 	    "imageName": "IMG_20231210_175847_528.jpg",
-	    "tag": "junior"
+	    "grade": 3
 	},
 	{
 		"position": [23.489349, 120.443519],
 	    "imageName": "IMG_20231210_175831_424.jpg",
-	    "tag": "junior"
+	    "grade": 4
 	},
 	{
 		"position": [23.487469, 120.444729],
 	    "imageName": "IMG_20231210_175828_829.jpg",
-	    "tag": "senior"
+	    "grade": 1
 	}
 ]
