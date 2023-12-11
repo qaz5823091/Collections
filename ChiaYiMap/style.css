@@ -19,6 +19,7 @@ img {
 }
 
 .leaflet-popup-content-wrapper {
+	padding-bottom: 10px;
 }
 
 .leaflet-popup-content {
@@ -66,6 +67,7 @@ img {
 
 .senior .leaflet-popup-content-wrapper {
 	background: #D82E3F;
+	color: white;
 }
 
 .senior .leaflet-popup-tip {
