@@ -1,0 +1,62 @@
+[
+	{
+		"position": [23.496527, 120.452585],
+	    "imageName": "IMG_20231211_154317_407.jpg",
+	    "intro": "元町家橫檳家系拉麵",
+	    "grade": 3
+	},
+	{
+		"position": [23.476959, 120.444982],
+	    "imageName": "IMG_20231211_153825_504.jpg",
+	    "intro": "煙拉麵",
+	    "grade": 4
+	},
+	{
+		"position": [23.478815, 120.450565],
+	    "imageName": "IMG_20231211_141519_048.jpg",
+	    "intro": "山越拉麵",
+	    "grade": 2
+	},
+	{
+		"position": [23.470474, 120.447772],
+	    "imageName": "IMG_20231211_141427_238.jpg",
+	    "intro": "麵屋木心",
+	    "grade": 2
+	},
+	{
+		"position": [23.481922, 120.448259],
+	    "imageName": "IMG_20231211_134622_147.jpg",
+	    "intro": "山崎拉麵",
+	    "grade": 2
+	},
+	{
+		"position": [23.471257, 120.442558],
+	    "imageName": "IMG_20231211_133544_342.jpg",
+	    "intro": "MR豚骨拉麵",
+	    "grade": 1
+	},
+	{
+		"position": [23.472856, 120.440661],
+	    "imageName": "IMG_20231211_133538_326.jpg",
+	    "intro": "吾妻拉麵",
+	    "grade": 2
+	},
+	{
+		"position": [23.476902, 120.435482],
+	    "imageName": "IMG_20231210_175535_234.jpg",
+	    "intro": "小肉屋台拉麵",
+	    "grade": 3
+	},
+	{
+		"position": [23.454760, 120.458637],
+	    "imageName": "1702280834359.jpg",
+	    "intro": "楓味屋拉麵",
+	    "grade": 2
+	},
+	{
+		"position": [23.476582, 120.440437],
+	    "imageName": "20230716_195510.jpg",
+	    "intro": "SAGAS",
+	    "grade": 3
+	}
+]
