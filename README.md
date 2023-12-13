@@ -10,7 +10,7 @@
 - [Equal Space Equal😑](https://qaz5823091.github.io/Collections/EqualSpaceEqual)
 
 ## Native HTML / JS / CSS
-- [ChiaYi Map 嘉義回憶地圖🗺️](https://qaz5823091.github.io/Collections/ChiaYiMap)
+- [ChiaYi Map 嘉憶地圖🗺️](https://qaz5823091.github.io/Collections/ChiaYiMap)
 - [Light Shop Sign 華燈初上招牌💈](https://qaz5823091.github.io/Collections/LightShopSign)
 - [Text2Image IG自製字體神器🖼️](https://qaz5823091.github.io/Collections/Text2Image)
 - [Happy New Year 新年快樂倒數計時🎉](https://qaz5823091.github.io/Collections/HappyNewYear)
