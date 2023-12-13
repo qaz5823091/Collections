@@ -1,11 +1,11 @@
 import data from './data.json' assert { type: 'json' }
 
-var map = L.map('map').setView([23.47496,120.45240], 14);
+var map = L.map('map').setView([23.4790,120.4278], 17);
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map)
 
-const TAG_LIST = ["freshman", "sophomore", "junior", "senior"]
+const TAG_LIST = ["freshman", "sophomore", "junior", "senior", "sp", "easter"]
 data.forEach((item) => {
     var image_content = `<img src="./images/${item.imageName}"></img>`
     var all_content = `<img src="./images/${item.imageName}"></img><span class="intro">${item.intro}</span>`

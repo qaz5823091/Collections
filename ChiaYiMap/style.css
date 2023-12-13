@@ -2,6 +2,7 @@ body {
     padding: 0;
     margin: 0;
 	user-select: none;
+	font-family: monospace;
 }
 
 html, body, #map {
@@ -72,4 +73,22 @@ img {
 
 .senior .leaflet-popup-tip {
 	background: #D82E3F;
+}
+
+.sp .leaflet-popup-content-wrapper {
+	background: #02a664;
+	color: white;
+}
+
+.sp .leaflet-popup-tip {
+	background: #02a664;
+}
+
+.easter .leaflet-popup-content-wrapper {
+	background: #0243a6;
+	color: white;
+}
+
+.easter .leaflet-popup-tip {
+	background: #0243a6;
 }
