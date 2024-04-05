@@ -150,21 +150,26 @@ function apply() {
 }
 
 async function copy() {
-    targetCanvas.toBlob(async function(blob) {
-        var data = [new ClipboardItem({
-            [blob.type]: blob
-        })];
-        if (navigator.clipboard) {
-            try {
-                await navigator.clipboard.write(data)
-                window.open("https://instagram.com")
-            } catch (error) {
-                alert("發生未知錯誤")
-            }
-        } else {
-            alert("瀏覽器不支援複製功能！");
-        }
-    }, 'image/png');
+    var image = document.createElement("img");
+    image.src = targetCanvas.toDataURL();
+    const makeImagePromise = async () => {
+        const data = await fetch(image.src)
+        return await data.blob()
+    }
+    if (navigator.clipboard) {
+        await navigator.clipboard.write([
+            new ClipboardItem({
+                "image/png": makeImagePromise()
+            })
+        ])
+        .then(() => console.log('yess'))
+        .catch((error) => {
+            console.log(error)
+            alert("發生未知錯誤！")
+        });
+    } else {
+        alert("瀏覽器不支援剪貼簿功能！");
+    }
 }
 
 function download() {
