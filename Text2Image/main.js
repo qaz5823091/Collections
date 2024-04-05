@@ -78,17 +78,22 @@ function setStyle() {
 }
 
 function makeImage() {
+    var canvas = document.createElement("canvas");
+    drawImage(canvas)
+    targetCanvas = canvas;
+}
+
+function drawImage(canvas, isPreview = false) {
     // handle user don't enter anything
     var userInputRows = (userInput.value != "") ? userInput.value.split(/\r?\n/): ["預覽文字"]
     var longestRow = userInputRows.reduce(
         (acc, word) => (word.length > acc.length ? word : acc), ""
     );
-    var ratio = window.devicePixelRatio;
-    var canvas = document.createElement("canvas");
-    var context = canvas.getContext("2d");
 
+    var ratio = window.devicePixelRatio;
     // set style before getting metrics
-    setContextStyle(context)
+    var context = canvas.getContext("2d");
+    setContextStyle(context, isPreview)
     var metrics = context.measureText(longestRow);
     var actualHeight = metrics.actualBoundingBoxAscent + metrics.actualBoundingBoxDescent;
     var actualWidth = metrics.width;
@@ -97,7 +102,7 @@ function makeImage() {
     canvas.getContext("2d").scale(ratio, ratio);
 
     // set style again before executing fillText
-    setContextStyle(context)
+    setContextStyle(context, isPreview)
     userInputRows.forEach((value, index) => {
         let x = getCoordinateX(actualWidth)
         let y = actualHeight * index
@@ -105,11 +110,14 @@ function makeImage() {
             userInputRows[index], x, y
         );
     });
-    targetCanvas = canvas;
 }
 
-function setContextStyle(context) {
-    context.font = String(selectedSize) + " " + String(selectedFont);
+function setContextStyle(context, isPreview) {
+    if (isPreview) {
+        context.font = "24px " + String(selectedFont);
+    } else {
+        context.font = String(selectedSize) + " " + String(selectedFont);
+    }
     context.textBaseline = "top"
     context.textAlign = selectedAlign
     context.fillStyle = selectedColor
@@ -135,21 +143,25 @@ function apply() {
     setStyle()
     makeImage()
     var image = document.createElement("img");
-    image.src = targetCanvas.toDataURL();
+    let previewCanvas = targetCanvas.cloneNode(true)
+    drawImage(previewCanvas, true)
+    image.src = previewCanvas.toDataURL();
     imageOutput.src = image.src;
 }
 
-function copy() {
-    targetCanvas.toBlob(function(blob) {
+async function copy() {
+    targetCanvas.toBlob(async function(blob) {
         var data = [new ClipboardItem({
             [blob.type]: blob
         })];
         if (navigator.clipboard) {
-            navigator.clipboard.write(data).then(function() {
-                console.log('yes');
-            }, function(err) {
-                alert("錯誤");
-            });
+            try {
+                await navigator.clipboard.write(data)
+                window.open("instagram://camera")
+                alert("複製成功！")
+            } catch (error) {
+                alert("發生未知錯誤")
+            }
         } else {
             alert("瀏覽器不支援複製功能！");
         }
@@ -158,7 +170,9 @@ function copy() {
 
 function download() {
     var a = document.createElement("a");
-    a.href = imageOutput.src;
+    var image = document.createElement("img");
+    image.src = targetCanvas.toDataURL();
+    a.href = image.src;
     a.download = "output.png";
     document.body.appendChild(a);
     a.click();
