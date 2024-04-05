@@ -9,13 +9,13 @@ html {
 
 @media only screen and (max-width: 1000px) {
     .container {
-        padding-top: 60%;
+        padding-top: 50%;
     }
 }
 
 @media only screen and (min-width: 1001px) {
     .container {
-        padding-top: 13em;
+        padding-top: 10em;
     }
 }
 
@@ -69,4 +69,12 @@ button:active {
     background-color: #0377fc;
     border: 1px #0377fc solid;
     color: white;
+}
+
+.material-symbols-outlined {
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24
 }

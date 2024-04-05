@@ -1,138 +1,156 @@
-var buttonApply = document.getElementById("button-apply");
-var buttonCopy = document.getElementById("button-copy");
-var buttonDownload = document.getElementById("button-download");
+/**
+ * Main function
+ */
+window.onload = function() {
+    initialComponents()
 
-var selectFont;
-var selectSize;
-var selectColor;
-var selectedFont;
-var selectedSize;
-var selectedColor;
+    fetchData().then(async function(data) {
+        await setList(data);
+        apply()
+        Array.from(elements).forEach((item) => {
+            item.addEventListener('change', apply);
+        });
+    });
 
-var fontSizeType = "em";
+    buttonApply.addEventListener("click", apply);
+    buttonCopy.addEventListener("click", copy);
+    buttonDownload.addEventListener("click", download);
+}
 
-var targetCanvas = null;
+function initialComponents() {
+    // input & output
+    userInput = document.getElementById("user-input");
+    imageOutput = document.getElementById("image-output");
+    fontSizeType = "px";
+    targetCanvas = null;
+    // custom font 
+    selectFont = document.getElementById("select-font");
+    selectSize = document.getElementById("select-size");
+    selectColor = document.getElementById("input-color");
+    selectAlign = document.getElementsByClassName("text-align")
+    // custom style
+    elements = document.getElementsByClassName("user-control-elements")
+    // custom button
+    buttonApply = document.getElementById("button-apply");
+    buttonCopy = document.getElementById("button-copy");
+    buttonDownload = document.getElementById("button-download");
+}
 
-var userInput = document.getElementById("user-input");
-var targetText = userInput.value;
-var imageOutput = document.getElementById("image-output");
-
-var elements;
-
+/**
+ * Get font information
+ */
 async function fetchData() {
     return await fetch('./data.json')
         .then((response) => response.json())
-        .then((data) => {
-            return data
-        })
+        .then((data) => data)
         .catch((error) => console.log(error));
 }
 
 function setList(data) {
     Object.keys(data).forEach(function(title) {
-        var font_title = title;
-        var optgroup = document.createElement('OPTGROUP');
-        optgroup.setAttribute('label', font_title);
-        optgroup.setAttribute('type', data[font_title]['type']);
+        var fontTitle = title;
+        var optGroup = document.createElement('OPTGROUP');
+        optGroup.setAttribute('label', fontTitle);
+        optGroup.setAttribute('type', data[fontTitle]['type']);
         Object.keys(data[title]['items']).forEach(function(item) {
-            var font_name = data[title]['items'][item];
+            var fontName = data[title]['items'][item];
             var opt = document.createElement('OPTION');
-            opt.setAttribute('value', font_name);
-            opt.setAttribute('class', font_name);
-            opt.innerHTML = font_name;
-            optgroup.appendChild(opt);
+            opt.setAttribute('value', fontName);
+            opt.setAttribute('class', fontName);
+            opt.innerHTML = fontName;
+            optGroup.appendChild(opt);
         });
-        selectFont.appendChild(optgroup);
+        selectFont.appendChild(optGroup);
     });
 }
 
+/**
+ * Handle text 2 image (the core of the program)
+ */
 function setStyle() {
-    var userInputRows = userInput.value.split(/\r?\n/);
-    var maxItem = userInputRows.reduce(
-        (acc, word) => (word.length > acc.length ? word : acc),
-        ""
-    );
     selectedFont = selectFont.value;
     selectedSize = selectSize.value + fontSizeType;
-    selectedColor = selectColor.value;
+    selectedColor = selectColor.value
+    selectedAlign = document.querySelector('input[name="select-align"]:checked').value
+    Array.from(selectAlign).forEach((item) => {
+        item.style.visibility = "hidden"
+    });
+}
 
-    var title = document.querySelector('select[name="select-font"] option:checked').parentElement.label;
-    var name = selectedFont;
-    var type = document.querySelector('select[name="select-font"] option:checked').parentElement.getAttribute('type');
-    //setFont(title, name, type);
-
+function makeImage() {
+    // handle user don't enter anything
+    var userInputRows = (userInput.value != "") ? userInput.value.split(/\r?\n/): ["預覽文字"]
+    var longestRow = userInputRows.reduce(
+        (acc, word) => (word.length > acc.length ? word : acc), ""
+    );
     var ratio = window.devicePixelRatio;
     var canvas = document.createElement("canvas");
-    canvas.width = 100;
-    canvas.height = 30;
-
     var context = canvas.getContext("2d");
-    context.font = String(selectedSize) + " " + String(selectedFont);
 
-    var metrics = context.measureText(maxItem);
-    var fontHeight = metrics.fontBoundingBoxAscent + metrics.fontBoundingBoxDescent;
-    var actualHeight = parseInt(context.font, 10);
+    // set style before getting metrics
+    setContextStyle(context)
+    var metrics = context.measureText(longestRow);
+    var actualHeight = metrics.actualBoundingBoxAscent + metrics.actualBoundingBoxDescent;
     var actualWidth = metrics.width;
-
     canvas.width = actualWidth * ratio;
-    canvas.height = actualHeight * ratio / 2 * (userInputRows.length * 2.5);
-    canvas.style.width = actualWidth + fontSizeType;
-    canvas.style.height = actualHeight + fontSizeType;
+    canvas.height = Math.ceil(actualHeight * ratio) * userInputRows.length;
     canvas.getContext("2d").scale(ratio, ratio);
 
-    context = canvas.getContext("2d");
-
-    context.font = String(selectedSize) + " " + String(selectedFont);
-    context.textAlign = "left";
-    context.fillStyle = selectedColor;
+    // set style again before executing fillText
+    setContextStyle(context)
     userInputRows.forEach((value, index) => {
-        context.fillText(userInputRows[index], 0, actualHeight * (index + 1));
+        let x = getCoordinateX(actualWidth)
+        let y = actualHeight * index
+        context.fillText(
+            userInputRows[index], x, y
+        );
     });
-
     targetCanvas = canvas;
+}
 
+function setContextStyle(context) {
+    context.font = String(selectedSize) + " " + String(selectedFont);
+    context.textBaseline = "top"
+    context.textAlign = selectedAlign
+    context.fillStyle = selectedColor
+}
+
+function getCoordinateX(width) {
+    var x = 0;
+    if (selectedAlign == "left") {
+        x = 0
+    } else if (selectedAlign == "center") {
+        x = width / 2
+    } else if (selectedAlign == "right") {
+        x = width
+    }
+    return x
+}
+
+
+/**
+ * Buttons handling (apply, copy, download) 
+ */
+function apply() {
+    setStyle()
+    makeImage()
     var image = document.createElement("img");
-    image.src = canvas.toDataURL();
+    image.src = targetCanvas.toDataURL();
     imageOutput.src = image.src;
 }
 
-window.onload = function() {
-    selectFont = document.getElementById("select-font");
-    selectSize = document.getElementById("select-size");
-    selectColor = document.getElementById("input-color");
-
-    fetchData().then(async function(data) {
-        await setList(data);
-        setStyle();
-
-        elements = [
-            userInput,
-            selectFont,
-            selectSize,
-            selectColor
-        ];
-
-        elements.forEach((item) => {
-            item.addEventListener('change', setStyle);
-        });
-    });
-
-    buttonApply.addEventListener("click", setStyle);
-    buttonCopy.addEventListener("click", copy);
-    buttonDownload.addEventListener("click", download);
-}
-
 function copy() {
-    targetCanvas.toBlob(function (blob) {
-        var data = [new ClipboardItem({ [blob.type]: blob })];
+    targetCanvas.toBlob(function(blob) {
+        var data = [new ClipboardItem({
+            [blob.type]: blob
+        })];
         if (navigator.clipboard) {
-            navigator.clipboard.write(data).then(function () {
+            navigator.clipboard.write(data).then(function() {
                 console.log('yes');
-            }, function (err) {
+            }, function(err) {
                 alert("錯誤");
             });
-        }
-        else {
+        } else {
             alert("瀏覽器不支援複製功能！");
         }
     }, 'image/png');
