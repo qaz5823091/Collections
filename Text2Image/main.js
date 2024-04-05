@@ -157,8 +157,7 @@ async function copy() {
         if (navigator.clipboard) {
             try {
                 await navigator.clipboard.write(data)
-                window.open("instagram://camera")
-                alert("複製成功！")
+                window.open("https://instagram.com")
             } catch (error) {
                 alert("發生未知錯誤")
             }
