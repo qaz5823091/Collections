@@ -9,7 +9,11 @@ window.onload = function() {
         apply()
         Array.from(elements).forEach((item) => {
             item.addEventListener('change', apply);
+            item.addEventListener('click', apply);
         });
+        Array.from(alignElements).forEach((item) => {
+            item.addEventListener('click', applyStateClicked)
+        })
     });
 
     buttonApply.addEventListener("click", apply);
@@ -23,14 +27,20 @@ function initialComponents() {
     imageOutput = document.getElementById("image-output");
     fontSizeType = "px";
     targetCanvas = null;
-    // custom font 
+    // custom style 
     selectFont = document.getElementById("select-font");
     selectSize = document.getElementById("select-size");
     selectColor = document.getElementById("input-color");
-    selectAlign = document.getElementsByClassName("text-align")
-    // custom style
+    backgroundColorCounter = 0
+    selectedBackgroundColor = ""
+    selectBackgroundColor = document.getElementById("input-background-color")
+    labelBackgroundColor = document.getElementById("span-background-color")
+    // on change elements
     elements = document.getElementsByClassName("user-control-elements")
+    hidingElements = document.getElementsByClassName("hiding-elements")
+    alignElements = document.getElementsByClassName("text-align")
     // custom button
+    selectBackgroundColor.addEventListener('click', onBackgroundColorClick)
     buttonApply = document.getElementById("button-apply");
     buttonCopy = document.getElementById("button-copy");
     buttonDownload = document.getElementById("button-download");
@@ -70,11 +80,39 @@ function setList(data) {
 function setStyle() {
     selectedFont = selectFont.value;
     selectedSize = selectSize.value + fontSizeType;
-    selectedColor = selectColor.value
+    if (selectedBackgroundColor == "") {
+        selectedColor = selectColor.value
+    }
     selectedAlign = document.querySelector('input[name="select-align"]:checked').value
-    Array.from(selectAlign).forEach((item) => {
+    Array.from(hidingElements).forEach((item) => {
         item.style.visibility = "hidden"
     });
+}
+
+function onBackgroundColorClick() {
+    backgroundColorCounter += 1
+    let counter = backgroundColorCounter % 3
+    if (counter == 0) {
+        selectedBackgroundColor = ""
+        labelBackgroundColor.style.color = "white"
+        labelBackgroundColor.style.background = "none"
+    } else if (counter == 1) {
+        selectedBackgroundColor = getComplementaryColor(selectedColor)
+        console.log(selectColor.value, selectedColor, selectedBackgroundColor)
+        labelBackgroundColor.style.color = "#0377fc"
+        labelBackgroundColor.style.background = "white"
+    } else if (counter == 2){
+        selectedBackgroundColor = selectColor.value
+        selectedColor = getComplementaryColor(selectedBackgroundColor)
+        labelBackgroundColor.style.color = "white"
+        labelBackgroundColor.style.background = "#0377fc"
+    }
+}
+
+function getComplementaryColor(color) {
+    if (color == "#ffffff") return "#000000"
+    var tempColor = color.slice(1).toString(16)
+    return "#" + (0xffffff ^ tempColor).toString(16)
 }
 
 function makeImage() {
@@ -102,6 +140,10 @@ function drawImage(canvas, isPreview = false) {
     canvas.getContext("2d").scale(ratio, ratio);
 
     // set style again before executing fillText
+    if (selectedBackgroundColor != "") {
+        context.fillStyle = selectedBackgroundColor
+        context.fillRect(0, 0, canvas.width, canvas.height)
+    }
     setContextStyle(context, isPreview)
     userInputRows.forEach((value, index) => {
         let x = getCoordinateX(actualWidth)
@@ -147,6 +189,13 @@ function apply() {
     drawImage(previewCanvas, true)
     image.src = previewCanvas.toDataURL();
     imageOutput.src = image.src;
+}
+
+function applyStateClicked() {
+    Array.from(alignElements).forEach((item) => {
+        item.style.background = "none"
+    })
+    this.style.background = "#0377fc"
 }
 
 async function copy() {

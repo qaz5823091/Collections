@@ -1,10 +1,8 @@
 html {
     height: 100%;
-    background: linear-gradient(
-        180deg, 
-        #fcd25d 50%, 
-        #2d755b 50%
-    );
+    background: #3b3b3b;
+    color: white;
+    user-select: none;
 }
 
 @media only screen and (max-width: 1000px) {
@@ -34,21 +32,35 @@ textarea {
     resize: none;
 }
 
-.custom {
-    margin-top: 100px;
-}
-
-#select-font, #input-color, #select-size, #button-apply, #button-copy, #button-download {
-    display: inline-block;
-}
 
 .custom {
-    margin: 0 auto;
-    display: block;
+    display: flex;
+    flex-direction: row;
+    justify-content: ;
 }
 
-.custom-font, .custom-style, .custom-button {
-    display: inline-block;
+.custom-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+button {
+    width: 100%;
+}
+
+.custom-align {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#input-color, #input-background-color {
+    width: 0px;
+}
+
+#span-aligh-left {
+    background: #0377fc;
 }
 
 .result {
