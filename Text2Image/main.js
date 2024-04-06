@@ -98,7 +98,6 @@ function onBackgroundColorClick() {
         labelBackgroundColor.style.background = "none"
     } else if (counter == 1) {
         selectedBackgroundColor = getComplementaryColor(selectedColor)
-        console.log(selectColor.value, selectedColor, selectedBackgroundColor)
         labelBackgroundColor.style.color = "#0377fc"
         labelBackgroundColor.style.background = "white"
     } else if (counter == 2){

@@ -7,13 +7,13 @@ html {
 
 @media only screen and (max-width: 1000px) {
     .container {
-        padding-top: 50%;
+        padding-top: 30%;
     }
 }
 
 @media only screen and (min-width: 1001px) {
     .container {
-        padding-top: 10em;
+        padding-top: 1em;
     }
 }
 
@@ -26,12 +26,15 @@ h2 {
     text-align: center;
 }
 
+#select-font {
+    width: 150px;
+}
+
 textarea {
     width: 100%;
     height: 100px;
     resize: none;
 }
-
 
 .custom {
     display: flex;
