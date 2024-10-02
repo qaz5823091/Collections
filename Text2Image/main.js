@@ -12,7 +12,10 @@ window.onload = function() {
             item.addEventListener('click', apply);
         });
         Array.from(alignElements).forEach((item) => {
-            item.addEventListener('click', applyStateClicked)
+            item.addEventListener('click', applyAlignStateClicked)
+        })
+        Array.from(emojiElements).forEach((item) => {
+            item.addEventListener('click', applyEmojiStateClicked)
         })
     });
 
@@ -37,8 +40,10 @@ function initialComponents() {
     labelBackgroundColor = document.getElementById("span-background-color")
     // on change elements
     elements = document.getElementsByClassName("user-control-elements")
+    // hidden radio button
     hidingElements = document.getElementsByClassName("hiding-elements")
     alignElements = document.getElementsByClassName("text-align")
+    emojiElements = document.getElementsByClassName("text-emoji")
     // custom button
     selectBackgroundColor.addEventListener('click', onBackgroundColorClick)
     buttonApply = document.getElementById("button-apply");
@@ -84,6 +89,10 @@ function setStyle() {
         selectedColor = selectColor.value
     }
     selectedAlign = document.querySelector('input[name="select-align"]:checked').value
+    selectedEmoji = document.querySelector('input[name="select-emoji"]:checked')
+    if (selectedEmoji != null) {
+        selectedEmoji = selectedEmoji.value
+    }
     Array.from(hidingElements).forEach((item) => {
         item.style.visibility = "hidden"
     });
@@ -130,12 +139,22 @@ function drawImage(canvas, isPreview = false) {
     var ratio = window.devicePixelRatio;
     // set style before getting metrics
     var context = canvas.getContext("2d");
-    setContextStyle(context, isPreview)
+    userInputRows.forEach((value, lineIndex) => {
+        let sentence = [...value]
+        if (selectedEmoji != null) {
+            sentence.forEach((char) => {
+                let isEmoji = /\p{RGI_Emoji}/v.test(char)
+                setContextStyle(context, isPreview, isEmoji)
+            })
+        } else {
+            setContextStyle(context, isPreview)
+        }
+    });
     var metrics = context.measureText(longestRow);
-    var actualHeight = metrics.actualBoundingBoxAscent + metrics.actualBoundingBoxDescent;
     var actualWidth = metrics.width;
-    canvas.width = actualWidth * ratio;
-    canvas.height = Math.ceil(actualHeight * ratio) * userInputRows.length;
+    var actualHeight = metrics.fontBoundingBoxAscent + metrics.fontBoundingBoxDescent;
+    canvas.width = Math.ceil(actualWidth * ratio)
+    canvas.height = Math.ceil(actualHeight * ratio) * userInputRows.length + 5;
     canvas.getContext("2d").scale(ratio, ratio);
 
     // set style again before executing fillText
@@ -143,23 +162,47 @@ function drawImage(canvas, isPreview = false) {
         context.fillStyle = selectedBackgroundColor
         context.fillRect(0, 0, canvas.width, canvas.height)
     }
-    setContextStyle(context, isPreview)
-    userInputRows.forEach((value, index) => {
+    userInputRows.forEach((value, lineIndex) => {
         let x = getCoordinateX(actualWidth)
-        let y = actualHeight * index
-        context.fillText(
-            userInputRows[index], x, y
-        );
+        let sentence = [...value]
+        let y = actualHeight * (lineIndex + 1)
+        if (selectedEmoji != null) {
+            let innerX = x
+            sentence.forEach((char) => {
+                let isEmoji = /\p{RGI_Emoji}/v.test(char)
+                setContextStyle(context, isPreview, isEmoji)
+                context.fillText(char, innerX, y)
+                innerX += context.measureText(char).width
+            })
+        } else {       
+            setContextStyle(context, isPreview)
+            context.fillText(
+                userInputRows[lineIndex], x, y
+            );
+        }
     });
 }
 
-function setContextStyle(context, isPreview) {
+function getHeight(context, text) {
+    let metrics = context.measureText(text)
+    return metrics.fontBoundingBoxAscent + metrics.fontBoundingBoxDescent;
+}
+
+function measureText(context, text, isPreview, isEmoji) {
+    let metrics = context.measureText(text);
+    let fontHeight = metrics.fontBoundingBoxAscent + metrics.fontBoundingBoxDescent;
+    let actualHeight = metrics.actualBoundingBoxAscent + metrics.actualBoundingBoxDescent;
+    console.log(fontHeight, actualHeight, isPreview ? "preview" : "apply", isEmoji ? 'yes' : 'no');
+}
+
+function setContextStyle(context, isPreview, isEmoji = false) {
+    let selectedStyle = isEmoji ? String(selectedEmoji) : String(selectedFont)
     if (isPreview) {
-        context.font = "24px " + String(selectedFont);
+        context.font = "24px " + selectedStyle
     } else {
-        context.font = String(selectedSize) + " " + String(selectedFont);
+        context.font = String(selectedSize) + " " + selectedStyle
     }
-    context.textBaseline = "top"
+    context.textBaseline = isEmoji ? "bottom" : "ideographic"
     context.textAlign = selectedAlign
     context.fillStyle = selectedColor
 }
@@ -190,11 +233,27 @@ function apply() {
     imageOutput.src = image.src;
 }
 
-function applyStateClicked() {
+// Choose one of them
+function applyAlignStateClicked() {
     Array.from(alignElements).forEach((item) => {
         item.style.background = "none"
     })
     this.style.background = "#0377fc"
+}
+
+// Choose one of them or none
+async function applyEmojiStateClicked() {
+    var isSeleted = this.style.background != ""
+    Array.from(emojiElements).forEach((item) => {
+        item.style.background = ""
+    })
+    if (!isSeleted) {
+        selectedEmoji = await document.querySelector('input[name="select-emoji"]:checked')
+        if (selectedEmoji != null) {
+            selectedEmoji = selectedEmoji.value
+        }        
+        this.style.background = "#0377fc"
+    }
 }
 
 async function copy() {

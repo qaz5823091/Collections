@@ -1,8 +1,20 @@
 {
+	"Apple-Color-Emoji": {
+		"type": "ttf",
+		"items": [
+			"AppleColorEmoji"
+		]
+	},
 	"Chiayi-City": {
 		"type": "ttf",
 		"items": [
 			"ChiayiCity"
+		]
+	},
+	"DelaGothicOne": {
+		"type": "ttf",
+		"items": [
+			"DelaGothicOne-Regular"
 		]
 	},
 	"Genyo-Font": {

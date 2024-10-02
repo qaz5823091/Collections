@@ -1,0 +1,12 @@
+@font-face {
+    font-family: "AppleColorEmoji";
+    src: url("./emojis/AppColorEmoji/AppleColorEmoji.ttf") format("truetype");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "NotoColorEmoji";
+    src: url("./emojis/NotoColorEmoji/NotoColorEmoji.ttf") format("truetype");
+    font-display: swap;
+}
+

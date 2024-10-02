@@ -7,6 +7,7 @@
         <link rel="icon" type="image/x-icon" href="https://static.cdninstagram.com/rsrc.php/v3/yI/r/VsNE-OHk_8a.png">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
         <link rel="stylesheet" href="./fonts.css">
+        <link rel="stylesheet" href="./emojis.css">
         <link rel="stylesheet" href="./style.css">
     </head>
     <body>
@@ -22,14 +23,17 @@
                     <option value="56">大</option>
                     <option value="72">非常大</option>
                 </select>
+                <!-- background style -->
                 <input class="hiding-elements user-control-elements" type="button" id="input-background-color" name="input-background-color">
                 <label class="user-control-elements" for="input-background-color" id="label-background-color">
                     <span class="material-symbols-outlined" id="span-background-color">format_color_text</span>
                 </label>
+                <!-- color selection -->
                 <input class="hiding-elements user-control-elements" type="color" id="input-color" name="input-color" value="#000000">
                 <label class="user-control-elements" for="input-color">
                     <span class="material-symbols-outlined">format_color_fill</span>
                 </label>
+                <!-- text alignment -->
                 <input class="hiding-elements user-control-elements" type="radio" id="text-align-left" name="select-align" value="left" checked>
                 <label class="user-control-elements" for="text-align-left" id="label-align-left">
                     <span class="material-symbols-outlined text-align" id="span-aligh-left">format_align_left</span>
@@ -41,6 +45,15 @@
                 <input class="hiding-elements user-control-elements" type="radio" id="text-align-right" name="select-align" value="right">
                 <label class="user-control-elements" for="text-align-right">
                     <span class="material-symbols-outlined text-align">format_align_right</span>
+                </label>
+                <!-- emoji selection -->
+                <input class="hiding-elements user-control-elements" type="radio" id="apple-emoji" name="select-emoji" value="AppleColorEmoji">
+                <label class="user-control-elements" for="apple-emoji">
+                    <span class="text-emoji" style="font-family:'AppleColorEmoji';">😂</span>
+                </label>
+                <input class="hiding-elements user-control-elements" type="radio" id="google-emoji" name="select-emoji" value="NotoColorEmoji">
+                <label class="user-control-elements" for="google-emoji">
+                    <span class="text-emoji" style="font-family:'NotoColorEmoji';">😂</span>
                 </label>
                 <div>
                     <hr>
